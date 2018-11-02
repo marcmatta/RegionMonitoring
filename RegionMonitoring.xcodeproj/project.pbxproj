@@ -15,8 +15,18 @@
 		1FEE57AA218A90AD009550D8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEE57A9218A90AD009550D8 /* MapKit.framework */; };
 		1FEE57AC218A90CE009550D8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEE57AB218A90CE009550D8 /* CoreLocation.framework */; };
 		1FEE57AF218A9F31009550D8 /* RegionMonitoring.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57AD218A9F31009550D8 /* RegionMonitoring.xcdatamodeld */; };
-		1FEE57B6218A9FA5009550D8 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57B5218A9FA5009550D8 /* Stack.swift */; };
+		1FEE57B6218A9FA5009550D8 /* GeofencingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57B5218A9FA5009550D8 /* GeofencingStack.swift */; };
 		1FEE57B8218AA019009550D8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEE57B7218AA019009550D8 /* CoreData.framework */; };
+		1FEE57BF218C44D4009550D8 /* CDGeofence+CoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57BE218C44D4009550D8 /* CDGeofence+CoreLocation.swift */; };
+		1FEE57C1218C4515009550D8 /* CDGeofenceEvent+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57C0218C4515009550D8 /* CDGeofenceEvent+Defaults.swift */; };
+		1FEE57C4218C45CC009550D8 /* LoiterOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57C3218C45CC009550D8 /* LoiterOperationQueue.swift */; };
+		1FEE57C7218C45FE009550D8 /* LoiterOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57C6218C45FE009550D8 /* LoiterOperation.swift */; };
+		1FEE57C9218C4651009550D8 /* Geofencing+Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57C8218C4651009550D8 /* Geofencing+Enumeration.swift */; };
+		1FEE57CC218C4687009550D8 /* RegionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57CB218C4687009550D8 /* RegionAnnotation.swift */; };
+		1FEE57CE218C46ED009550D8 /* GeofencingLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57CD218C46ED009550D8 /* GeofencingLocationManager.swift */; };
+		1FEE57D0218C474A009550D8 /* GeofencingLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */; };
+		1FEE57D2218C52CC009550D8 /* GeofencingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */; };
+		1FEE57D4218C56A7009550D8 /* GeofencingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57D3218C56A7009550D8 /* GeofencingMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +40,22 @@
 		1FEE57A9218A90AD009550D8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1FEE57AB218A90CE009550D8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1FEE57AE218A9F31009550D8 /* RegionMonitoring.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RegionMonitoring.xcdatamodel; sourceTree = "<group>"; };
-		1FEE57B5218A9FA5009550D8 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		1FEE57B5218A9FA5009550D8 /* GeofencingStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingStack.swift; sourceTree = "<group>"; };
 		1FEE57B7218AA019009550D8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1FEE57B9218AD717009550D8 /* GoToWorkCME.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = GoToWorkCME.gpx; path = ../../../Gitlab/iOS/Earned/earnedcard/earnedcard/Data/GPX/CME/GoToWorkCME.gpx; sourceTree = "<group>"; };
 		1FEE57BA218AD717009550D8 /* PassByWorkCME.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PassByWorkCME.gpx; path = ../../../Gitlab/iOS/Earned/earnedcard/earnedcard/Data/GPX/CME/PassByWorkCME.gpx; sourceTree = "<group>"; };
 		1FEE57BB218AD717009550D8 /* Badaro.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Badaro.gpx; path = ../../../Gitlab/iOS/Earned/earnedcard/earnedcard/Data/GPX/CME/Badaro.gpx; sourceTree = "<group>"; };
 		1FEE57BC218AD717009550D8 /* LeaveWorkCME.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = LeaveWorkCME.gpx; path = ../../../Gitlab/iOS/Earned/earnedcard/earnedcard/Data/GPX/CME/LeaveWorkCME.gpx; sourceTree = "<group>"; };
+		1FEE57BE218C44D4009550D8 /* CDGeofence+CoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGeofence+CoreLocation.swift"; sourceTree = "<group>"; };
+		1FEE57C0218C4515009550D8 /* CDGeofenceEvent+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDGeofenceEvent+Defaults.swift"; sourceTree = "<group>"; };
+		1FEE57C3218C45CC009550D8 /* LoiterOperationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoiterOperationQueue.swift; sourceTree = "<group>"; };
+		1FEE57C6218C45FE009550D8 /* LoiterOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoiterOperation.swift; sourceTree = "<group>"; };
+		1FEE57C8218C4651009550D8 /* Geofencing+Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geofencing+Enumeration.swift"; sourceTree = "<group>"; };
+		1FEE57CB218C4687009550D8 /* RegionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionAnnotation.swift; sourceTree = "<group>"; };
+		1FEE57CD218C46ED009550D8 /* GeofencingLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingLocationManager.swift; sourceTree = "<group>"; };
+		1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingLocationManagerDelegate.swift; sourceTree = "<group>"; };
+		1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingRepository.swift; sourceTree = "<group>"; };
+		1FEE57D3218C56A7009550D8 /* GeofencingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +96,7 @@
 		1FEE5795218A8F17009550D8 /* RegionMonitoring */ = {
 			isa = PBXGroup;
 			children = (
+				1FEE57C2218C4574009550D8 /* Geofencing */,
 				1FEE57B4218A9F98009550D8 /* CoreData */,
 				1FEE5796218A8F17009550D8 /* AppDelegate.swift */,
 				1FEE5798218A8F17009550D8 /* ViewController.swift */,
@@ -100,10 +121,51 @@
 		1FEE57B4218A9F98009550D8 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1FEE57BD218C44B6009550D8 /* Models */,
 				1FEE57AD218A9F31009550D8 /* RegionMonitoring.xcdatamodeld */,
-				1FEE57B5218A9FA5009550D8 /* Stack.swift */,
+				1FEE57B5218A9FA5009550D8 /* GeofencingStack.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		1FEE57BD218C44B6009550D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1FEE57BE218C44D4009550D8 /* CDGeofence+CoreLocation.swift */,
+				1FEE57C0218C4515009550D8 /* CDGeofenceEvent+Defaults.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1FEE57C2218C4574009550D8 /* Geofencing */ = {
+			isa = PBXGroup;
+			children = (
+				1FEE57CA218C467A009550D8 /* MapView */,
+				1FEE57C5218C45F0009550D8 /* Operations */,
+				1FEE57C8218C4651009550D8 /* Geofencing+Enumeration.swift */,
+				1FEE57CD218C46ED009550D8 /* GeofencingLocationManager.swift */,
+				1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */,
+				1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */,
+			);
+			path = Geofencing;
+			sourceTree = "<group>";
+		};
+		1FEE57C5218C45F0009550D8 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				1FEE57C3218C45CC009550D8 /* LoiterOperationQueue.swift */,
+				1FEE57C6218C45FE009550D8 /* LoiterOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		1FEE57CA218C467A009550D8 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				1FEE57CB218C4687009550D8 /* RegionAnnotation.swift */,
+				1FEE57D3218C56A7009550D8 /* GeofencingMapView.swift */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,9 +239,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FEE57C7218C45FE009550D8 /* LoiterOperation.swift in Sources */,
+				1FEE57C4218C45CC009550D8 /* LoiterOperationQueue.swift in Sources */,
+				1FEE57D0218C474A009550D8 /* GeofencingLocationManagerDelegate.swift in Sources */,
 				1FEE5799218A8F17009550D8 /* ViewController.swift in Sources */,
+				1FEE57D4218C56A7009550D8 /* GeofencingMapView.swift in Sources */,
+				1FEE57D2218C52CC009550D8 /* GeofencingRepository.swift in Sources */,
+				1FEE57CE218C46ED009550D8 /* GeofencingLocationManager.swift in Sources */,
 				1FEE57AF218A9F31009550D8 /* RegionMonitoring.xcdatamodeld in Sources */,
-				1FEE57B6218A9FA5009550D8 /* Stack.swift in Sources */,
+				1FEE57CC218C4687009550D8 /* RegionAnnotation.swift in Sources */,
+				1FEE57C9218C4651009550D8 /* Geofencing+Enumeration.swift in Sources */,
+				1FEE57C1218C4515009550D8 /* CDGeofenceEvent+Defaults.swift in Sources */,
+				1FEE57B6218A9FA5009550D8 /* GeofencingStack.swift in Sources */,
+				1FEE57BF218C44D4009550D8 /* CDGeofence+CoreLocation.swift in Sources */,
 				1FEE5797218A8F17009550D8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Geofence" representedClassName="Geofence" syncable="YES" codeGenerationType="class">
+    <entity name="CDGeofence" representedClassName="CDGeofence" syncable="YES" codeGenerationType="class">
         <attribute name="details" attributeType="String" syncable="YES"/>
         <attribute name="expectedCheckout" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
@@ -11,24 +11,24 @@
         <attribute name="maxCheckout" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="radius" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GeofenceEvent" inverseName="geofence" inverseEntity="GeofenceEvent" syncable="YES"/>
-        <relationship name="loiterEvent" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LoiterEvents" inverseName="geofence" inverseEntity="LoiterEvents" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDGeofenceEvent" inverseName="geofence" inverseEntity="CDGeofenceEvent" syncable="YES"/>
+        <relationship name="loiterEvent" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDLoiterEvent" inverseName="geofence" inverseEntity="CDLoiterEvent" syncable="YES"/>
     </entity>
-    <entity name="GeofenceEvent" representedClassName="GeofenceEvent" syncable="YES" codeGenerationType="class">
+    <entity name="CDGeofenceEvent" representedClassName="CDGeofenceEvent" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="eventId" attributeType="String" syncable="YES"/>
         <attribute name="synced" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
-        <relationship name="geofence" maxCount="1" deletionRule="Nullify" destinationEntity="Geofence" inverseName="events" inverseEntity="Geofence" syncable="YES"/>
+        <relationship name="geofence" maxCount="1" deletionRule="Nullify" destinationEntity="CDGeofence" inverseName="events" inverseEntity="CDGeofence" syncable="YES"/>
     </entity>
-    <entity name="LoiterEvents" representedClassName="LoiterEvents" syncable="YES" codeGenerationType="class">
+    <entity name="CDLoiterEvent" representedClassName="CDLoiterEvent" syncable="YES" codeGenerationType="class">
         <attribute name="delay" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="geofence" maxCount="1" deletionRule="Nullify" destinationEntity="Geofence" inverseName="loiterEvent" inverseEntity="Geofence" syncable="YES"/>
+        <relationship name="geofence" maxCount="1" deletionRule="Nullify" destinationEntity="CDGeofence" inverseName="loiterEvent" inverseEntity="CDGeofence" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GeofenceEvent" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="LoiterEvents" positionX="-54" positionY="18" width="128" height="90"/>
-        <element name="Geofence" positionX="-36" positionY="45" width="128" height="225"/>
+        <element name="CDGeofence" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDGeofenceEvent" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDLoiterEvent" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class CoreDataStack: NSObject {
+class GeofencingStack: NSObject {
     private let persistentContainer = NSPersistentContainer(name: "RegionMonitoring")
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
-    static let shared = CoreDataStack()
+    static let shared = GeofencingStack()
     
     func load(completion: @escaping ()->Void)  {
         self.persistentContainer.loadPersistentStores() {[weak self] (description, error) in
