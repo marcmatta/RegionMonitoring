@@ -27,6 +27,7 @@
 		1FEE57D0218C474A009550D8 /* GeofencingLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */; };
 		1FEE57D2218C52CC009550D8 /* GeofencingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */; };
 		1FEE57D4218C56A7009550D8 /* GeofencingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57D3218C56A7009550D8 /* GeofencingMapView.swift */; };
+		1FEE57D6218C79DE009550D8 /* GeofenceEventSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57D5218C79DE009550D8 /* GeofenceEventSyncManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingLocationManagerDelegate.swift; sourceTree = "<group>"; };
 		1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingRepository.swift; sourceTree = "<group>"; };
 		1FEE57D3218C56A7009550D8 /* GeofencingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingMapView.swift; sourceTree = "<group>"; };
+		1FEE57D5218C79DE009550D8 /* GeofenceEventSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceEventSyncManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				1FEE57CD218C46ED009550D8 /* GeofencingLocationManager.swift */,
 				1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */,
 				1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */,
+				1FEE57D5218C79DE009550D8 /* GeofenceEventSyncManager.swift */,
 			);
 			path = Geofencing;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				1FEE57AF218A9F31009550D8 /* RegionMonitoring.xcdatamodeld in Sources */,
 				1FEE57CC218C4687009550D8 /* RegionAnnotation.swift in Sources */,
 				1FEE57C9218C4651009550D8 /* Geofencing+Enumeration.swift in Sources */,
+				1FEE57D6218C79DE009550D8 /* GeofenceEventSyncManager.swift in Sources */,
 				1FEE57C1218C4515009550D8 /* CDGeofenceEvent+Defaults.swift in Sources */,
 				1FEE57B6218A9FA5009550D8 /* GeofencingStack.swift in Sources */,
 				1FEE57BF218C44D4009550D8 /* CDGeofence+CoreLocation.swift in Sources */,

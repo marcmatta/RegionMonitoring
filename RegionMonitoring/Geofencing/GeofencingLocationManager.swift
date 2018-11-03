@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import CoreData
 
 class GeofencingLocationManager {
     var locationManager = CLLocationManager()
@@ -17,12 +18,13 @@ class GeofencingLocationManager {
     }()
     
     var geofencingDelegate = GeofencingLocationManagerCoreDataDelegate()
-    var repository = GeofencingCoreDataRepository()
+    var syncManager = GeofenceEventSyncManager()
     
     init() {
-        geofencingDelegate.repository = repository
         geofencingDelegate.loiteringQueue = loiteringQueue
         locationManager.delegate = geofencingDelegate
+        
+        syncManager.load()
     }
     
     func startMonitoring(for region: CLRegion) {
@@ -34,7 +36,7 @@ class GeofencingLocationManager {
     func stopMonitoring(for region: CLRegion) {
         DispatchQueue.main.async { [weak self] in
             self?.locationManager.stopMonitoring(for: region)
-            self?.repository.removeGeofence(for: region)
+            GeofencingCoreDataRepository.removeGeofence(for: region)
         }
     }
     
@@ -48,5 +50,13 @@ class GeofencingLocationManager {
                 self.locationManager.requestAlwaysAuthorization()
             }
         }
+    }
+    
+    func stop() {
+        self.locationManager.monitoredRegions.forEach {[unowned self] (region) in
+            self.locationManager.stopMonitoring(for: region)
+        }
+        
+        GeofencingCoreDataRepository.removeAllGeofences()
     }
 }

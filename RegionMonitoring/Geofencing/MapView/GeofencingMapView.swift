@@ -44,7 +44,6 @@ class GeofencingMapView: MKMapView {
     func addRegion() {
         let center = self.centerCoordinate
         GeofencingStack.shared.performUpdate {[unowned self] (context) in
-            
             let geofence = NSEntityDescription.insertNewObject(forEntityName: String(describing: CDGeofence.self), into: context) as! CDGeofence
             
             geofence.identifier = UUID().uuidString
@@ -121,7 +120,7 @@ extension GeofencingMapView: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
-        guard let annotation = view.annotation as? RegionAnnotation else{
+        guard let annotation = view.annotation as? RegionAnnotation else {
             return
         }
         
@@ -145,7 +144,7 @@ extension GeofencingMapView: MKMapViewDelegate {
             self.removeAnnotation(annotation)
             self.centerCoordinate = newCenter
             
-            self.geofencingManager?.repository.removeGeofence(for: region)
+            GeofencingCoreDataRepository.removeGeofence(for: region)
 
             self.addRegion()
         }

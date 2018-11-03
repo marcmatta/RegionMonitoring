@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     
     let geofencingManager = GeofencingLocationManager()
     
-    
     lazy var fetchedResultsController : NSFetchedResultsController<CDGeofenceEvent> = {
         let request : NSFetchRequest<CDGeofenceEvent> = CDGeofenceEvent.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]

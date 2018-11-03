@@ -17,6 +17,7 @@ class GeofencingStack: NSObject {
     
     static let shared = GeofencingStack()
     
+    
     func load(completion: @escaping ()->Void)  {
         self.persistentContainer.loadPersistentStores() {[weak self] (description, error) in
             self?.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
@@ -34,6 +35,10 @@ class GeofencingStack: NSObject {
         } catch {
             print(error)
         }
+    }
+    
+    func newBackgroundContext() -> NSManagedObjectContext {
+        return self.persistentContainer.newBackgroundContext()
     }
     
     func saveContext () -> Bool {

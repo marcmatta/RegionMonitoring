@@ -12,19 +12,18 @@ import CoreData
 
 class GeofencingLocationManagerCoreDataDelegate : NSObject, CLLocationManagerDelegate {
     weak var loiteringQueue: LoiterOperationQueue!
-    weak var repository: GeofencingCoreDataRepository!
-    
+
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         guard let region = region as? CLCircularRegion else {
             return
         }
         
-        GeofencingStack.shared.performUpdate {[unowned self] (context) in
-            guard let geofence = self.repository.geofence(with: region.identifier, context: context) else {
+        GeofencingStack.shared.performUpdate { (context) in
+            guard let geofence = GeofencingCoreDataRepository.geofence(with: region.identifier, context: context) else {
                 return
             }
             
-            if let loiterEvent = self.repository.loitering(for: region, using: context) {
+            if let loiterEvent = GeofencingCoreDataRepository.loitering(for: region, using: context) {
                 let now = Date()
                 let timeSinceLoiter = now.timeIntervalSince(loiterEvent.start!)
                 
@@ -85,7 +84,7 @@ class GeofencingLocationManagerCoreDataDelegate : NSObject, CLLocationManagerDel
             } else {
                 switch state {
                 case .inside:
-                    if let event = self.repository.lastEvent(for: region, using: context), event.type == "enter" {
+                    if let event = GeofencingCoreDataRepository.lastEvent(for: region, using: context), event.type == "enter" {
                         return
                     }
                     
@@ -103,7 +102,7 @@ class GeofencingLocationManagerCoreDataDelegate : NSObject, CLLocationManagerDel
                     geofence.loiterEvent = newLoiter
                     
                 case .outside:
-                    if let event = self.repository.lastEvent(for: region, using: context), [GeofenceEventType.exit, GeofenceEventType.start, GeofenceEventType.fail].map({$0.rawValue}).contains(event.type)  {
+                    if let event = GeofencingCoreDataRepository.lastEvent(for: region, using: context), [GeofenceEventType.exit, GeofenceEventType.start, GeofenceEventType.fail].map({$0.rawValue}).contains(event.type)  {
                         return
                     }
                     
@@ -119,8 +118,8 @@ class GeofencingLocationManagerCoreDataDelegate : NSObject, CLLocationManagerDel
     }
     
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        GeofencingStack.shared.performUpdate {[unowned self] (context) in
-            guard let geofence = self.repository.geofence(with: region.identifier, context: context) else {
+        GeofencingStack.shared.performUpdate {(context) in
+            guard let geofence = GeofencingCoreDataRepository.geofence(with: region.identifier, context: context) else {
                 return
             }
             
@@ -136,8 +135,8 @@ class GeofencingLocationManagerCoreDataDelegate : NSObject, CLLocationManagerDel
     
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         if let region = region {
-            GeofencingStack.shared.performUpdate {[unowned self] (context) in
-                guard let geofence = self.repository.geofence(with: region.identifier, context: context) else {
+            GeofencingStack.shared.performUpdate { (context) in
+                guard let geofence = GeofencingCoreDataRepository.geofence(with: region.identifier, context: context) else {
                     return
                 }
                 
