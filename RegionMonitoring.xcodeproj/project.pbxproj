@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FD0286D218F2CE3005FEA5C /* GeofenceEventNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD0286C218F2CE3005FEA5C /* GeofenceEventNotificationManager.swift */; };
 		1FEE5797218A8F17009550D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE5796218A8F17009550D8 /* AppDelegate.swift */; };
 		1FEE5799218A8F17009550D8 /* GeofencingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE5798218A8F17009550D8 /* GeofencingViewController.swift */; };
 		1FEE579C218A8F17009550D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE579A218A8F17009550D8 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FD0286C218F2CE3005FEA5C /* GeofenceEventNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceEventNotificationManager.swift; sourceTree = "<group>"; };
 		1FEE5793218A8F17009550D8 /* RegionMonitoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegionMonitoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEE5796218A8F17009550D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FEE5798218A8F17009550D8 /* GeofencingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */,
 				1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */,
 				1FEE57D5218C79DE009550D8 /* GeofenceEventSyncManager.swift */,
+				1FD0286C218F2CE3005FEA5C /* GeofenceEventNotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -222,6 +225,11 @@
 				TargetAttributes = {
 					1FEE5792218A8F17009550D8 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -263,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FEE57C7218C45FE009550D8 /* LoiterOperation.swift in Sources */,
+				1FD0286D218F2CE3005FEA5C /* GeofenceEventNotificationManager.swift in Sources */,
 				1FEE57C4218C45CC009550D8 /* LoiterOperationQueue.swift in Sources */,
 				1FEE57D0218C474A009550D8 /* GeofencingLocationManagerDelegate.swift in Sources */,
 				1FEE5799218A8F17009550D8 /* GeofencingViewController.swift in Sources */,
