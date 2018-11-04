@@ -18,7 +18,7 @@ struct Constants {
     static let maxCheckout: Double = 120
 }
 
-class ViewController: UIViewController {
+class GeofencingViewController: UIViewController {
     @IBOutlet weak var mapView: GeofencingMapView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: NSFetchedResultsControllerDelegate {
+extension GeofencingViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
@@ -83,7 +83,7 @@ extension ViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension GeofencingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
     }
@@ -93,6 +93,7 @@ extension ViewController: UITableViewDataSource {
         let event = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = event.geofence?.name ?? ""
         cell.detailTextLabel?.text = "\(event.type!) at \(event.date!)"
+        cell.contentView.backgroundColor = event.synced ? UIColor.green.withAlphaComponent(0.2) : UIColor.yellow.withAlphaComponent(0.2)
         return cell
     }
 }

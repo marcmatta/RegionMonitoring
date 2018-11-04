@@ -11,6 +11,7 @@ import CoreData
 
 class GeofenceEventSyncManager: NSObject {
     var operationQueue = OperationQueue()
+    var syncAction : SyncGeofenceEventOperation.SyncGeofenceEventAction
     
     lazy var unsynced : NSFetchedResultsController<CDGeofenceEvent> = {
         let fetchRequest: NSFetchRequest<CDGeofenceEvent> = CDGeofenceEvent.fetchRequest()
@@ -22,20 +23,47 @@ class GeofenceEventSyncManager: NSObject {
         return controller
     }()
     
-    func load() {
+    init(syncAction: @escaping SyncGeofenceEventOperation.SyncGeofenceEventAction) {
+        self.syncAction = syncAction
+        super.init()
+        
         try? unsynced.performFetch()
         
         unsynced.fetchedObjects?.forEach({[weak self] in
-            self?.operationQueue.addOperation(SyncGeofenceEventOperation(eventId: $0.eventId!))
+            let operation = SyncGeofenceEventOperation(eventId: $0.eventId!)
+            operation.action = syncAction
+            self?.operationQueue.addOperation(operation)
         })
     }
 }
 
+enum SyncGeofenceEventResult {
+    case failed
+    case synced
+}
+
 class SyncGeofenceEventOperation: Operation {
-    let eventId: String
+    typealias SyncGeofenceEventAction = (_ completion: (SyncGeofenceEventResult) -> Void)->Void
+    fileprivate var action: SyncGeofenceEventAction?
+    let semaphore = DispatchSemaphore(value: 0)
+    private lazy var completion: (SyncGeofenceEventResult) -> Void = {
+        return {[weak self] result in
+            if let self = self {
+                switch result {
+                case .failed:
+                    self.perform()
+                case .synced:
+                    GeofencingCoreDataRepository.didSyncGeofenceEvent(with: self.eventId)
+                    self.semaphore.signal()
+                }
+            }
+        }
+    }()
     
+    let eventId: String
     init(eventId: String) {
         self.eventId = eventId
+        super.init()
     }
     
     override func main() {
@@ -44,48 +72,35 @@ class SyncGeofenceEventOperation: Operation {
         }
         
         let context = GeofencingStack.shared.newBackgroundContext()
-        let fetchRequest : NSFetchRequest<CDGeofenceEvent> = CDGeofenceEvent.fetchRequest()
-        fetchRequest.predicate =  NSPredicate(format: "eventId = %@", eventId)
-        fetchRequest.fetchLimit = 1
-        
-        if let event = ((try? context.fetch(fetchRequest))?.first) {
+        if let _ = GeofencingCoreDataRepository.geofenceEvent(with: eventId, context: context) {
             // Upload event synchronously
-            let semaphore = DispatchSemaphore(value: 0)
             
-            DispatchQueue.global(qos: .background).async { [weak self] in
-                self?.perform(semaphore: semaphore)
-                guard let self = self, !self.isCancelled else {
-                    return
-                }
-                
-                event.synced = true
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: DispatchTime.now() + 2) { [weak self] in
+                self?.perform()
             }
             
             _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-            context.saveIfHasChanges()
-        }
-        
-        if isCancelled {
-            return
         }
     }
     
-    private func perform(semaphore: DispatchSemaphore) {
-        semaphore.signal()
+    private func perform() {
+        action?(completion)
     }
 }
 
 extension GeofenceEventSyncManager: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        if let indexPath = indexPath {
-            let object = controller.object(at: indexPath) as! CDGeofenceEvent
+        if let object = anObject as? CDGeofenceEvent {
             switch type {
             case .insert:
-                operationQueue.addOperation(SyncGeofenceEventOperation(eventId: object.eventId!))
+                let operation = SyncGeofenceEventOperation(eventId: object.eventId!)
+                operation.action = syncAction
+                operationQueue.addOperation(operation)
             case .delete:
                 operationQueue.operations.map { $0 as! SyncGeofenceEventOperation }.first { (operation) -> Bool in
                     return operation.eventId == object.eventId
-                }?.cancel()
+                    }?.cancel()
+                
             default:
                 break
             }

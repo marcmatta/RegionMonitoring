@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1FEE5797218A8F17009550D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE5796218A8F17009550D8 /* AppDelegate.swift */; };
-		1FEE5799218A8F17009550D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE5798218A8F17009550D8 /* ViewController.swift */; };
+		1FEE5799218A8F17009550D8 /* GeofencingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE5798218A8F17009550D8 /* GeofencingViewController.swift */; };
 		1FEE579C218A8F17009550D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE579A218A8F17009550D8 /* Main.storyboard */; };
 		1FEE579E218A8F19009550D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE579D218A8F19009550D8 /* Assets.xcassets */; };
 		1FEE57A1218A8F19009550D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE579F218A8F19009550D8 /* LaunchScreen.storyboard */; };
@@ -28,12 +28,13 @@
 		1FEE57D2218C52CC009550D8 /* GeofencingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */; };
 		1FEE57D4218C56A7009550D8 /* GeofencingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57D3218C56A7009550D8 /* GeofencingMapView.swift */; };
 		1FEE57D6218C79DE009550D8 /* GeofenceEventSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE57D5218C79DE009550D8 /* GeofenceEventSyncManager.swift */; };
+		1FEE57DA218EF8F1009550D8 /* GeofencingPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE57D9218EF8F1009550D8 /* GeofencingPreview.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1FEE5793218A8F17009550D8 /* RegionMonitoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegionMonitoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEE5796218A8F17009550D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1FEE5798218A8F17009550D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1FEE5798218A8F17009550D8 /* GeofencingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingViewController.swift; sourceTree = "<group>"; };
 		1FEE579B218A8F17009550D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FEE579D218A8F19009550D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FEE57A0218A8F19009550D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingRepository.swift; sourceTree = "<group>"; };
 		1FEE57D3218C56A7009550D8 /* GeofencingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingMapView.swift; sourceTree = "<group>"; };
 		1FEE57D5218C79DE009550D8 /* GeofenceEventSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceEventSyncManager.swift; sourceTree = "<group>"; };
+		1FEE57D9218EF8F1009550D8 /* GeofencingPreview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GeofencingPreview.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1FEE57C2218C4574009550D8 /* Geofencing */,
-				1FEE57B4218A9F98009550D8 /* CoreData */,
 				1FEE5796218A8F17009550D8 /* AppDelegate.swift */,
-				1FEE5798218A8F17009550D8 /* ViewController.swift */,
 				1FEE579A218A8F17009550D8 /* Main.storyboard */,
 				1FEE579D218A8F19009550D8 /* Assets.xcassets */,
 				1FEE579F218A8F19009550D8 /* LaunchScreen.storyboard */,
@@ -123,32 +123,30 @@
 		1FEE57B4218A9F98009550D8 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				1FEE57BD218C44B6009550D8 /* Models */,
+				1FEE57BD218C44B6009550D8 /* Entities */,
 				1FEE57AD218A9F31009550D8 /* RegionMonitoring.xcdatamodeld */,
 				1FEE57B5218A9FA5009550D8 /* GeofencingStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		1FEE57BD218C44B6009550D8 /* Models */ = {
+		1FEE57BD218C44B6009550D8 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				1FEE57BE218C44D4009550D8 /* CDGeofence+CoreLocation.swift */,
 				1FEE57C0218C4515009550D8 /* CDGeofenceEvent+Defaults.swift */,
 			);
-			path = Models;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		1FEE57C2218C4574009550D8 /* Geofencing */ = {
 			isa = PBXGroup;
 			children = (
-				1FEE57CA218C467A009550D8 /* MapView */,
+				1FEE57B4218A9F98009550D8 /* CoreData */,
+				1FEE57CA218C467A009550D8 /* UIKit Preview */,
 				1FEE57C5218C45F0009550D8 /* Operations */,
-				1FEE57C8218C4651009550D8 /* Geofencing+Enumeration.swift */,
-				1FEE57CD218C46ED009550D8 /* GeofencingLocationManager.swift */,
-				1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */,
-				1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */,
-				1FEE57D5218C79DE009550D8 /* GeofenceEventSyncManager.swift */,
+				1FEE57D7218EF8BF009550D8 /* Types */,
+				1FEE57D8218EF8C8009550D8 /* Managers */,
 			);
 			path = Geofencing;
 			sourceTree = "<group>";
@@ -162,13 +160,34 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
-		1FEE57CA218C467A009550D8 /* MapView */ = {
+		1FEE57CA218C467A009550D8 /* UIKit Preview */ = {
 			isa = PBXGroup;
 			children = (
+				1FEE5798218A8F17009550D8 /* GeofencingViewController.swift */,
 				1FEE57CB218C4687009550D8 /* RegionAnnotation.swift */,
 				1FEE57D3218C56A7009550D8 /* GeofencingMapView.swift */,
+				1FEE57D9218EF8F1009550D8 /* GeofencingPreview.storyboard */,
 			);
-			path = MapView;
+			path = "UIKit Preview";
+			sourceTree = "<group>";
+		};
+		1FEE57D7218EF8BF009550D8 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				1FEE57C8218C4651009550D8 /* Geofencing+Enumeration.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		1FEE57D8218EF8C8009550D8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1FEE57CD218C46ED009550D8 /* GeofencingLocationManager.swift */,
+				1FEE57CF218C474A009550D8 /* GeofencingLocationManagerDelegate.swift */,
+				1FEE57D1218C52CC009550D8 /* GeofencingRepository.swift */,
+				1FEE57D5218C79DE009550D8 /* GeofenceEventSyncManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +250,7 @@
 			files = (
 				1FEE57A1218A8F19009550D8 /* LaunchScreen.storyboard in Resources */,
 				1FEE579E218A8F19009550D8 /* Assets.xcassets in Resources */,
+				1FEE57DA218EF8F1009550D8 /* GeofencingPreview.storyboard in Resources */,
 				1FEE579C218A8F17009550D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,7 +265,7 @@
 				1FEE57C7218C45FE009550D8 /* LoiterOperation.swift in Sources */,
 				1FEE57C4218C45CC009550D8 /* LoiterOperationQueue.swift in Sources */,
 				1FEE57D0218C474A009550D8 /* GeofencingLocationManagerDelegate.swift in Sources */,
-				1FEE5799218A8F17009550D8 /* ViewController.swift in Sources */,
+				1FEE5799218A8F17009550D8 /* GeofencingViewController.swift in Sources */,
 				1FEE57D4218C56A7009550D8 /* GeofencingMapView.swift in Sources */,
 				1FEE57D2218C52CC009550D8 /* GeofencingRepository.swift in Sources */,
 				1FEE57CE218C46ED009550D8 /* GeofencingLocationManager.swift in Sources */,

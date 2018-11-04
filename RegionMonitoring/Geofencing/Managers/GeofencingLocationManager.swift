@@ -18,13 +18,13 @@ class GeofencingLocationManager {
     }()
     
     var geofencingDelegate = GeofencingLocationManagerCoreDataDelegate()
-    var syncManager = GeofenceEventSyncManager()
+    var syncManager = GeofenceEventSyncManager { (completion) in
+        completion(.synced)
+    }
     
     init() {
         geofencingDelegate.loiteringQueue = loiteringQueue
-        locationManager.delegate = geofencingDelegate
-        
-        syncManager.load()
+        locationManager.delegate = geofencingDelegate        
     }
     
     func startMonitoring(for region: CLRegion) {

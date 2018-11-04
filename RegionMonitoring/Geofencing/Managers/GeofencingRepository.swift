@@ -54,4 +54,19 @@ class GeofencingCoreDataRepository {
         fetchRequest.fetchLimit = 1
         return (try? context.fetch(fetchRequest))?.first
     }
+    
+    static func geofenceEvent(with identifier: String, context: NSManagedObjectContext) -> CDGeofenceEvent? {
+        let fetchRequest : NSFetchRequest<CDGeofenceEvent> = CDGeofenceEvent.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "eventId = %@", identifier)
+        fetchRequest.fetchLimit = 1
+        
+        return (try? context.fetch(fetchRequest))?.first
+    }
+    
+    static func didSyncGeofenceEvent(with identifier: String) {
+        GeofencingStack.shared.performUpdate { (context) in
+            let event = geofenceEvent(with: identifier, context: context)
+            event?.synced = true
+        }
+    }
 }
