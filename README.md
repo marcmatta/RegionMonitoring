@@ -2,11 +2,11 @@
 Simulated Loitering
 
 
-# Requirements
+## Requirements
 1. Local Notifications
 2. Location Always permissions
 
-# Installation
+## Installation
 1. Drop Geofencing folder into own code.
 2. Code to start service
 
